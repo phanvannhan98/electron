@@ -1,0 +1,33 @@
+name: Build Electron for macOS
+
+on:
+  push:
+    branches:
+      - master # Hoặc branch bạn muốn chạy pipeline
+
+jobs:
+  build:
+    runs-on: macos-latest # Chạy runner trên macOS
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20.18.0"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Electron for macOS
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact # Tên của artifact
+          path: build # Đường dẫn chứa file bạn muốn upload
