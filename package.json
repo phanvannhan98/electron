@@ -1,0 +1,43 @@
+{
+  "name": "Serenity",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron main.js",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.sbifpt.serenity",
+    "productName": "Serenity",
+    "win": {
+      "target": "nsis",
+      "icon": "public/app-icon.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "public/app-icon.png"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "dist/**/*",
+      "public/**/*"
+    ],
+    "directories": {
+      "output": "build"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "electron-packager": "^17.1.2"
+  },
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
